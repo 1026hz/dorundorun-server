@@ -16,6 +16,6 @@ public class AgentDemoIncidentService {
 
 	public String resolveRunnerLabel(Long runnerId) {
 		String label = runnerLabels.get(runnerId);
-		return label.trim();
+		return label != null ? label.trim() : "unknown-runner";
 	}
 }
