@@ -16,6 +16,9 @@ public class AgentDemoIncidentService {
 
 	public String resolveRunnerLabel(Long runnerId) {
 		String label = runnerLabels.get(runnerId);
+		if (label == null) {
+			return "";
+		}
 		return label.trim();
 	}
 }
