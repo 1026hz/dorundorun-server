@@ -18,4 +18,11 @@ class AgentDemoIncidentControllerTest {
 			.isInstanceOf(ResponseStatusException.class)
 			.hasMessageContaining("403 FORBIDDEN");
 	}
+
+	@Test
+	void rejectsInvalidDemoKeyForGeneralIncident() {
+		assertThatThrownBy(() -> controller.injectGeneralIncident("null-pointer", "wrong-secret"))
+			.isInstanceOf(ResponseStatusException.class)
+			.hasMessageContaining("403 FORBIDDEN");
+	}
 }

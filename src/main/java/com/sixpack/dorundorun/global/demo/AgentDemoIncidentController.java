@@ -44,4 +44,19 @@ public class AgentDemoIncidentController {
 		}
 		return Map.of("runnerLabel", incidentService.resolveRunnerLabel(runnerId));
 	}
+
+	@PostMapping("/errors/{errorType}")
+	public Map<String, Object> injectGeneralIncident(
+		@PathVariable String errorType,
+		@RequestHeader("X-Agent-Demo-Key") String suppliedSecret
+	) {
+		verifySecret(suppliedSecret);
+		return Map.of("result", incidentService.trigger(errorType));
+	}
+
+	private void verifySecret(String suppliedSecret) {
+		if (!MessageDigest.isEqual(secret, suppliedSecret.getBytes(UTF_8))) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+		}
+	}
 }
