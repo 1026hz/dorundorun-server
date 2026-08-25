@@ -67,6 +67,7 @@ public class SecurityConfig {
 				authorize
 					.requestMatchers("/public/**").permitAll()
 					.requestMatchers("/api/health").permitAll()
+					.requestMatchers("/internal/agent-demo/**").permitAll()
 					.requestMatchers("/actuator/**").permitAll()
 					.requestMatchers("/api/auth/sms/**").permitAll()
 					.requestMatchers("/api/auth/signup").permitAll()
@@ -107,4 +108,3 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 }
-
