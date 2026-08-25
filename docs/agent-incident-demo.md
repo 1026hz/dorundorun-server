@@ -14,6 +14,15 @@ AGENT_DEMO_SECRET=<충분히 긴 임시 비밀값>
 
 `AGENT_DEMO_SECRET` 값은 저장소, 이미지, 로그에 기록하지 않습니다.
 
+운영 애플리케이션과 격리된 데모 JAR는 다음 명령으로 생성합니다.
+
+```bash
+./gradlew agentDemoBootJar
+```
+
+결과물은 `build/libs/agent-demo.jar`이며 운영 DB·JPA·Redis·Spring Security 자동 구성을
+불러오지 않습니다.
+
 ## 정상 요청
 
 등록된 ID는 정상 응답을 반환합니다.

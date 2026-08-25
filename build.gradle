@@ -92,3 +92,12 @@ tasks.named('test') {
 tasks.named('compileJava') {
     options.compilerArgs << '-Xlint:deprecation'
 }
+
+tasks.register('agentDemoBootJar', org.springframework.boot.gradle.tasks.bundling.BootJar) {
+    group = 'build'
+    description = 'Builds the isolated incident-agent demo server without production infrastructure.'
+    archiveFileName = 'agent-demo.jar'
+    mainClass = 'com.sixpack.dorundorun.global.demo.AgentDemoApplication'
+    classpath = sourceSets.main.runtimeClasspath
+    targetJavaVersion = JavaVersion.VERSION_17
+}
