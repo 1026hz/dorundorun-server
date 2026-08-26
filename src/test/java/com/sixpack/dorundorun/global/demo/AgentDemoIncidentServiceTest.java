@@ -34,6 +34,13 @@ class AgentDemoIncidentServiceTest {
 		assertThatThrownBy(() -> service.trigger(errorType)).isInstanceOf(errorClass);
 	}
 
+	@Test
+	void numberFormatDemoUsesTheBadRunnerIdString() {
+		assertThatThrownBy(() -> service.trigger("number-format"))
+			.isInstanceOf(NumberFormatException.class)
+			.hasMessageContaining("runner-x");
+	}
+
 	private static Stream<Arguments> generalErrors() {
 		return Stream.of(
 			Arguments.of("null-pointer", NullPointerException.class),
